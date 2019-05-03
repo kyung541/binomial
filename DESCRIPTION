@@ -1,0 +1,15 @@
+Package: binomial
+Type: Package
+Title: Calculate Probabilities of a Binomial Random Variable
+Version: 0.1.0
+Author: Boris Yung
+Maintainer: Boris Yung <kyung541@berkeley.edu>
+Description: Function to calculate the probabilities of a binomial random variable, 
+  and also calculations and plot the probability distribution and cumulative of probability.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1

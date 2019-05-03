@@ -1,0 +1,84 @@
+---
+title: "Package -- binomial"
+author: "Boris Yung"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{binomial}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(collaspe = T, coomment = "#>" )
+library(binomial)
+```
+
+## Calculate Binomial Random Variable
+The package *Binomial* is a minimal implementation for calculateing the probailities of random variabl and to visualize the relatvie frequencies in of the random variable. 
+
+## Creating a Binomial random variable
+The first step is to create a **binomial variable** object with the function `bin_choose(n,k)` with **n** and **k**. 
+
+  1. n = trials 
+  2. k = success
+
+```{r message = FALSE, warning=FALSE}
+variable = bin_choose(n = 5,k=2)
+variable
+```
+
+By defeault, `bin_choose()` creates a _valid_ binomial varialbe with valid `trails`, `success`, **and** `probability`. 
+
+## Calculating the binomial probability
+Once you have defined a `"binomial variable"` object, you can use the function `bin_probability(success, trials, prob)` to calculate the _probability_ of `success` in the `number of trials`according to the `probability (probability of success)` you entered. The output will be an object of class `"numeric"`, which will contain the the binomial probability. 
+```{r message = FALSE, warning=FALSE}
+binpro = bin_probability(success = 2, trials=5, prob=0.5)
+binpro
+```
+
+## Calculating and plot the binomial distribution
+This package can also calculate the `"binomial distribution"` as well. You can use function `bin_distribution(trials,prob)` to create the `"binomial distribution"` in the class of `"bindis"` **and** `"data.frame"`. It will give you a nice table of distribution. 
+```{r message = FALSE, warning=FALSE}
+bindist = bin_distribution(trials = 5, prob = 0.5)
+bindist
+```
+
+The `plot()` function will create a nice barplot to display table with class of `"bindis"` that generate from `"bin_distribution"`
+```{r message = FALSE, warning=FALSE}
+bindistrP = plot(bindist)
+bindistrP
+```
+
+## Calculating and plot the binomial cumulative distributioon 
+You can also calculate the binomial cumulative distribution through this package as well. You can use function `bin_cumulative(trials, prob)` to create a table of `"binomial cumlative distribution"` which is an object of class `"bincum"` **and** `"data.frame"`. 
+```{r message = FALSE, warning=FALSE}
+bincumu = bin_cumulative(trials = 5, prob = 0.5)
+bincumu
+```
+
+You can also use the `plot()` function, which can give you a nice line graph that display the table with class `"bincum"` that generated from function `"bin_cumulative"`.
+
+```{r message = FALSE, warning=FALSE}
+bincumuP = plot(bincumu)
+bincumuP
+
+
+```
+
+
+
+## Listing the variables 
+You can use the function `bin_variable(trials, prob)` to generate the numbers of trials and probability of success in a userfriendly, nice formated list. 
+```{r message = FALSE, warning=FALSE}
+binvar = bin_variable(trials = 10, prob = 0.3)
+binvar
+```
+
+You can also use the functiono `summary()` to generate the summary of the list with the class of `summary.binvar` which generated from the function `"bin_variable"`. It will give you a nice, customice list that display `mean`, `mode` , `variance`, `skweness` **and** `kurtosis`. 
+```{r message = FALSE, warning=FALSE}
+binvarsum = summary(binvar)
+binvarsum
+```
+
